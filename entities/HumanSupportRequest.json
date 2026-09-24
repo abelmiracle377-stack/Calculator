@@ -1,0 +1,29 @@
+{
+  "name": "HumanSupportRequest",
+  "description": "Server-only support handoff request linked to a Help Desk conversation",
+  "properties": {
+    "conversation_token": { "type": "string", "description": "Opaque local conversation token linked to the handoff" },
+    "owner_user_id": { "type": "string", "description": "Authenticated platform user id when available" },
+    "owner_email": { "type": "string", "description": "Normalized authenticated account email when available" },
+    "requester_name": { "type": "string", "description": "Bounded name supplied for human support" },
+    "requester_email": { "type": "string", "description": "Validated email supplied for human support" },
+    "reason": { "type": "string", "description": "Bounded visitor reason for requesting human support" },
+    "summary": { "type": "string", "description": "Bounded support summary assembled from the current handoff" },
+    "resolution_summary": { "type": "string", "description": "Bounded administrator-authored resolution summary, the only support text eligible for explicit learning promotion" },
+    "status": { "type": "string", "description": "Support status: NEW, IN_PROGRESS, or RESOLVED" },
+    "requested_at": { "type": "string", "description": "Server timestamp when support was requested" },
+    "assigned_admin": { "type": "string", "description": "Normalized administrator email assigned to the request" },
+    "private_note": { "type": "string", "description": "Bounded private administrator note, never used as learning input" },
+    "resolved_at": { "type": "string", "description": "Server timestamp when the request was resolved" },
+    "last_updated_at": { "type": "string", "description": "Server timestamp of the latest administrator update" },
+    "last_updated_by": { "type": "string", "description": "Administrator email that made the latest update" },
+    "status_updated_at": { "type": "string", "description": "Server timestamp when the status last changed" },
+    "status_updated_by": { "type": "string", "description": "Administrator email that last changed the status" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

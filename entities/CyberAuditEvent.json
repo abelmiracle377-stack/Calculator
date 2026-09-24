@@ -1,0 +1,23 @@
+{
+  "name": "CyberAuditEvent",
+  "description": "Append-oriented private audit event for protected CyberAI administrator actions",
+  "properties": {
+    "action": { "type": "string", "description": "Server-recorded CyberAI action name" },
+    "outcome": { "type": "string", "description": "SUCCESS, DENIED, VALIDATION_FAILED, or ERROR" },
+    "actor_email": { "type": "string", "description": "Verified administrator email or server denial marker" },
+    "actor_user_id": { "type": "string", "description": "Authenticated platform user id when available" },
+    "asset_id": { "type": "string", "description": "Related asset id when applicable" },
+    "authorization_id": { "type": "string", "description": "Related authorization id when applicable" },
+    "target_snapshot": { "type": "string", "description": "Bounded server-captured target context, never a command" },
+    "message": { "type": "string", "description": "Bounded private event explanation" },
+    "occurred_at": { "type": "string", "description": "Server timestamp for the event" },
+    "request_id": { "type": "string", "description": "Server-generated event correlation id" },
+    "workspace_key": { "type": "string", "description": "Server-controlled workspace boundary key for future tenancy" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

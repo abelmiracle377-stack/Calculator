@@ -1,0 +1,21 @@
+import { superdevClient } from "@/lib/superdev/client";
+
+export const transcribeAudioSegment = superdevClient.functions.transcribeAudioSegment;
+export const manualPayments = superdevClient.functions.manualPayments;
+export const manualPaymentAdmin = superdevClient.functions.manualPaymentAdmin;
+export const accessStatus = superdevClient.functions.accessStatus;
+export const adminAccess = superdevClient.functions["admin-access"];
+export const processCustomGuidelineFile = superdevClient.functions["process-custom-guideline-file"];
+export const translateTranscriptSegment = superdevClient.functions.translateTranscriptSegment;
+export const synthesizeTranslationAudio = superdevClient.functions.synthesizeTranslationAudio;
+export const proposeAiLearning = superdevClient.functions["propose-ai-learning"];
+export const adminAiLearning = superdevClient.functions["admin-ai-learning"];
+export const approvedAiLearningContext = superdevClient.functions["approved-ai-learning-context"];
+export const submitAccessRequest = superdevClient.functions["submit-access-request"];
+export const reengagementReminder = superdevClient.functions["reengagement-reminder"];
+export const helpDeskChat = superdevClient.functions.helpDeskChat;
+export const inAppAssistantAction = superdevClient.functions["in-app-assistant"];
+export const documentStudioAction = superdevClient.functions["document-studio"];
+export const lumaVideo = superdevClient.functions["luma-video"];
+export const cyberSecurityAdmin = superdevClient.functions["cyber-security-admin"];
+export const cyberSecurityUser = superdevClient.functions["cyber-security-user"];

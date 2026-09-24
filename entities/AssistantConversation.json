@@ -1,0 +1,19 @@
+{
+  "name": "AssistantConversation",
+  "description": "A private in-app assistant conversation owned by one workspace user",
+  "properties": {
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "selected_document_id": { "type": "string", "description": "Optional owner-scoped AssistantDocument used as the conversation source" },
+    "title": { "type": "string", "description": "Bounded owner-facing conversation title" },
+    "status": { "type": "string", "description": "Conversation state: OPEN or ARCHIVED" },
+    "message_count": { "type": "number", "description": "Bounded count of saved user and assistant messages" },
+    "last_message_at": { "type": "string", "description": "ISO timestamp of the latest saved message" }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

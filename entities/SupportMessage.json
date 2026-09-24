@@ -1,0 +1,23 @@
+{
+  "name": "SupportMessage",
+  "description": "Server-only bounded support message and administrator email reply record",
+  "properties": {
+    "conversation_token": { "type": "string", "description": "Opaque local token linking this message to a support conversation" },
+    "access_request_id": { "type": "string", "description": "Protected access request id when this message belongs to an access-request thread" },
+    "owner_user_id": { "type": "string", "description": "Authenticated platform user id when available" },
+    "owner_email": { "type": "string", "description": "Normalized authenticated account email when available" },
+    "role": { "type": "string", "description": "Message role: user, assistant, system, or admin" },
+    "message_text": { "type": "string", "description": "Bounded visible support message text only" },
+    "source": { "type": "string", "description": "Message source metadata such as visitor, assistant, handoff, or administrator_email" },
+    "recipient_email": { "type": "string", "description": "Server-resolved recipient for an administrator email reply" },
+    "subject": { "type": "string", "description": "Plain-text subject for an administrator email reply" },
+    "delivery_status": { "type": "string", "description": "Safe transactional email delivery state for an administrator reply" },
+    "sent_at": { "type": "string", "description": "Server timestamp when the message was stored" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

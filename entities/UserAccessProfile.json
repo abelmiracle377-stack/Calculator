@@ -1,0 +1,39 @@
+{
+  "name": "UserAccessProfile",
+  "description": "Private server-maintained transcription access lifecycle record for one user account",
+  "properties": {
+    "owner_email": { "type": "string", "description": "Verified account email that owns this access record" },
+    "lifecycle_status": { "type": "string", "description": "TRIALING, TRIAL_EXPIRED, PAYMENT_PENDING, PREMIUM_ACTIVE, PREMIUM_EXPIRED, or ADMIN_RESTRICTED" },
+    "trial_start": { "type": "string", "description": "Authoritative free-trial start timestamp" },
+    "trial_end": { "type": "string", "description": "Free-trial expiration timestamp, exactly 7 days after trial_start" },
+    "trial_start_source": { "type": "string", "description": "account_created_at when available, otherwise first_authenticated_at" },
+    "premium_start": { "type": "string", "description": "Current Premium period start timestamp" },
+    "premium_end": { "type": "string", "description": "Current Premium period expiration timestamp" },
+    "premium_payment_id": { "type": "string", "description": "Approved payment record that granted the current Premium period" },
+    "premium_payment_method": { "type": "string", "description": "Payment method for the current Premium period" },
+    "manual_restricted": { "type": "boolean", "description": "Administrator-controlled access restriction flag" },
+    "manual_restriction_reason": { "type": "string", "description": "Private administrator-only restriction reason" },
+    "manual_restricted_at": { "type": "string", "description": "When the manual restriction was applied" },
+    "manual_restricted_by": { "type": "string", "description": "Private administrator actor reference for the manual restriction" },
+    "internal_note": { "type": "string", "description": "Private administrator-only note about the account" },
+    "pending_payment_id": { "type": "string", "description": "Most recent pending payment record id" },
+    "pending_payment_submitted_at": { "type": "string", "description": "Submission timestamp for the pending payment" },
+    "first_activity_at": { "type": "string", "description": "First authenticated activity timestamp observed by the server" },
+    "last_activity_at": { "type": "string", "description": "Most recent authenticated activity timestamp observed by the server" },
+    "first_ip": { "type": "string", "description": "First trusted request IP available to the server" },
+    "first_ip_at": { "type": "string", "description": "Timestamp when first_ip was recorded" },
+    "last_ip": { "type": "string", "description": "Most recent trusted request IP available to the server" },
+    "last_ip_at": { "type": "string", "description": "Timestamp when last_ip was recorded" },
+    "last_lifecycle_transition_at": { "type": "string", "description": "Timestamp of the last lifecycle transition audit" },
+    "last_lifecycle_transition_key": { "type": "string", "description": "Idempotency key for the last lifecycle transition audit" },
+    "signup_notification_status": { "type": "string", "description": "Server-controlled signup email marker: NOT_ATTEMPTED, SENDING, SENT, FAILED, or SKIPPED" },
+    "signup_notification_at": { "type": "string", "description": "Server timestamp when the signup email attempt completed" },
+    "signup_notification_error": { "type": "string", "description": "Safe bounded signup email delivery status detail" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "delete": { "user_condition": { "email": "abelmiracle377@gmail.com" } }
+  }
+}

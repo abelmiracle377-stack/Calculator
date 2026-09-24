@@ -1,0 +1,16 @@
+{
+  "name": "AdminNotificationSettings",
+  "description": "Protected administrator-only destination for app-owned access request alerts",
+  "properties": {
+    "settings_key": { "type": "string", "description": "Stable settings record key, currently default" },
+    "recipient_email": { "type": "string", "description": "Validated email address that receives new access request alerts" },
+    "enabled": { "type": "boolean", "description": "Whether new access request alerts are sent" },
+    "updated_by": { "type": "string", "description": "Administrator email that last changed the setting" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

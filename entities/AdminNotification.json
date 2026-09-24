@@ -1,0 +1,20 @@
+{
+  "name": "AdminNotification",
+  "description": "Server-only administrator notification with per-admin read state",
+  "properties": {
+    "event_type": { "type": "string", "description": "Notification type: ACCESS_REQUEST, HUMAN_SUPPORT, or SUPPORT_EVENT" },
+    "title": { "type": "string", "description": "Bounded administrator-facing notification title" },
+    "message": { "type": "string", "description": "Bounded administrator-facing notification message" },
+    "related_access_request_id": { "type": "string", "description": "Optional linked AccessRequest id" },
+    "conversation_token": { "type": "string", "description": "Optional linked opaque support conversation token" },
+    "human_support_request_id": { "type": "string", "description": "Optional linked HumanSupportRequest id" },
+    "read_by": { "type": "array", "description": "Normalized administrator emails that have read this notification", "items": { "type": "string" } },
+    "dedupe_key": { "type": "string", "description": "Server-generated idempotency key for one support event notification" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

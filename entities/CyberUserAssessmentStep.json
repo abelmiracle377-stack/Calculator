@@ -1,0 +1,27 @@
+{
+  "name": "CyberUserAssessmentStep",
+  "description": "Owner-scoped assessment conversation step and truthful not-run tool intent",
+  "properties": {
+    "session_id": { "type": "string", "description": "Owner-scoped parent assessment session id" },
+    "step_number": { "type": "number", "description": "Server-assigned bounded order within the session" },
+    "step_kind": { "type": "string", "description": "USER_MESSAGE or AI_PLAN" },
+    "user_message": { "type": "string", "description": "Bounded user request when this is a user step" },
+    "workflow_stage": { "type": "string", "description": "Bounded workflow stage for the planning response" },
+    "proposed_tool": { "type": "string", "description": "Bounded named tool or analysis intent" },
+    "action": { "type": "string", "description": "Bounded plain-language planned action" },
+    "configuration_summary": { "type": "string", "description": "Bounded configuration summary, never an unrestricted command" },
+    "result_status": { "type": "string", "description": "Always NOT_RUN during the Phase 1 planning boundary" },
+    "result_message": { "type": "string", "description": "Truthful not-run message for the current phase" },
+    "explanation": { "type": "string", "description": "Bounded AI planning explanation" },
+    "next_step": { "type": "string", "description": "Bounded suggested next planning step" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "workspace_key": { "type": "string", "description": "Server-derived per-user workspace boundary" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

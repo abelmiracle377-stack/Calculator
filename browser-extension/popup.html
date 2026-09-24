@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verbatim Desk Capture</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header class="brand-row">
+        <div class="brand-mark" aria-hidden="true"><span>V</span></div>
+        <div>
+          <p class="eyebrow">VERBATIM DESK</p>
+          <h1>Tab audio capture</h1>
+        </div>
+      </header>
+
+      <section class="status-card" id="status-card" aria-labelledby="status-label">
+        <div class="status-heading">
+          <div class="status-orb" id="status-orb" aria-hidden="true"><span></span></div>
+          <div class="status-copy">
+            <p class="status-label" id="status-label" aria-live="polite">Idle</p>
+            <p class="status-message" id="status-message">Choose a supported tab, then start capture.</p>
+          </div>
+          <span class="status-badge" id="status-badge">READY</span>
+        </div>
+        <div class="signal-track" aria-label="Current audio level" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span id="signal-fill"></span>
+        </div>
+        <div class="metrics" aria-label="Capture timing">
+          <div class="metric"><span>Source duration</span><strong id="source-duration">00:00.00</strong></div>
+          <div class="metric"><span>Meaningful start</span><strong id="meaningful-start">Not detected</strong></div>
+          <div class="metric"><span>Meaningful end</span><strong id="meaningful-end">Not detected</strong></div>
+          <div class="metric"><span>Trailing silence</span><strong id="trailing-silence">Not available</strong></div>
+        </div>
+      </section>
+
+      <p class="tab-line" id="tab-line" hidden><span class="tab-dot"></span><span id="tab-title"></span></p>
+
+      <div class="actions">
+        <button class="button button-primary" id="start-button" type="button">Start capture</button>
+        <button class="button button-secondary" id="stop-button" type="button" disabled>Stop capture</button>
+      </div>
+
+      <p class="error-panel" id="error-panel" role="alert" hidden></p>
+      <p class="privacy-note">Capture continues while this popup is closed. Audio stays local in this proof slice.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

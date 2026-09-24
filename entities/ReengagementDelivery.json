@@ -1,0 +1,18 @@
+{
+  "name": "ReengagementDelivery",
+  "description": "Private server-only one-attempt delivery marker for the older inactive account reminder",
+  "properties": {
+    "campaign_key": { "type": "string", "description": "Server-controlled reminder campaign identifier" },
+    "owner_email": { "type": "string", "description": "Normalized verified account email receiving the reminder" },
+    "status": { "type": "string", "description": "ATTEMPTED, SENT, or FAILED delivery state" },
+    "attempted_at": { "type": "string", "description": "Server timestamp when the one delivery attempt began" },
+    "sent_at": { "type": "string", "description": "Server timestamp when the reminder was accepted for sending" },
+    "error": { "type": "string", "maxLength": 500, "description": "Safe bounded delivery error without message content" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

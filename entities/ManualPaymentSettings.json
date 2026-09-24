@@ -1,0 +1,41 @@
+{
+  "name": "ManualPaymentSettings",
+  "description": "Administrator-managed destinations and fixed-price instructions for manual Premium payment verification",
+  "properties": {
+    "settings_key": { "type": "string", "description": "Singleton key for the manual payment configuration" },
+    "premium_price_usd": { "type": "number", "description": "Fixed Premium price in USD, kept at 20 by the server" },
+    "nigeria_enabled": { "type": "boolean", "description": "Whether Nigeria bank transfer instructions are available" },
+    "nigeria_bank_name": { "type": "string", "description": "Nigeria receiving bank name" },
+    "nigeria_account_name": { "type": "string", "description": "Nigeria receiving account name" },
+    "nigeria_account_number": { "type": "string", "description": "Nigeria receiving account number" },
+    "nigeria_instructions": { "type": "string", "description": "Additional Nigeria transfer instructions" },
+    "nigeria_ngn_rate": { "type": "number", "description": "Manually configured NGN amount for one USD" },
+    "nigeria_rate_timestamp": { "type": "string", "description": "ISO timestamp when the NGN rate was last changed" },
+    "uk_enabled": { "type": "boolean", "description": "Whether UK bank transfer instructions are available" },
+    "uk_account_holder_name": { "type": "string", "description": "UK receiving account holder name" },
+    "uk_bank_name": { "type": "string", "description": "UK receiving bank name" },
+    "uk_account_number": { "type": "string", "description": "UK receiving account number" },
+    "uk_sort_code": { "type": "string", "description": "UK receiving sort code" },
+    "uk_iban": { "type": "string", "description": "UK receiving IBAN" },
+    "uk_bic_swift": { "type": "string", "description": "UK receiving BIC or SWIFT code" },
+    "uk_bank_address": { "type": "string", "description": "Optional UK bank address" },
+    "uk_account_holder_address": { "type": "string", "description": "Optional UK account holder address" },
+    "uk_instructions": { "type": "string", "description": "Additional UK transfer instructions" },
+    "uk_gbp_rate": { "type": "number", "description": "Manually configured GBP amount for one USD" },
+    "uk_rate_timestamp": { "type": "string", "description": "ISO timestamp when the GBP rate was last changed" },
+    "usa_enabled": { "type": "boolean", "description": "Whether USA bank transfer instructions are available" },
+    "usa_account_holder_name": { "type": "string", "description": "USA receiving account holder name" },
+    "usa_bank_name": { "type": "string", "description": "USA receiving bank name" },
+    "usa_account_number": { "type": "string", "description": "USA receiving account number" },
+    "usa_routing_number": { "type": "string", "description": "USA receiving routing number" },
+    "usa_bank_address": { "type": "string", "description": "Optional USA bank address" },
+    "usa_account_holder_address": { "type": "string", "description": "Optional USA account holder address" },
+    "usa_instructions": { "type": "string", "description": "Additional USA transfer instructions" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "delete": { "user_condition": { "email": "abelmiracle377@gmail.com" } }
+  }
+}

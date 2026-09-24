@@ -1,0 +1,23 @@
+{
+  "name": "CyberUserAssessmentSession",
+  "description": "Owner-scoped planning assessment session with no live scan execution",
+  "properties": {
+    "asset_id": { "type": "string", "description": "Owner-scoped asset selected for planning" },
+    "authorization_id": { "type": "string", "description": "Owner-scoped authorization selected for planning" },
+    "title": { "type": "string", "description": "Bounded assessment title" },
+    "status": { "type": "string", "description": "PLANNING or ARCHIVED session state" },
+    "current_stage": { "type": "string", "description": "Current bounded penetration-testing workflow stage" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "workspace_key": { "type": "string", "description": "Server-derived per-user workspace boundary" },
+    "last_activity_at": { "type": "string", "description": "Server timestamp of the latest planning activity" },
+    "archived_at": { "type": "string", "description": "Server timestamp when the session was archived" },
+    "archived_by": { "type": "string", "description": "Server-derived owner email that archived the session" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

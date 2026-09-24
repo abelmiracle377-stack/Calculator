@@ -1,0 +1,21 @@
+{
+  "name": "AdminGrant",
+  "description": "Private server-maintained administrator grant and revocation record for a platform account",
+  "properties": {
+    "user_id": { "type": "string", "description": "Stable platform user id receiving the administrator grant" },
+    "user_email": { "type": "string", "description": "Normalized account email retained for display and legacy fallback" },
+    "role": { "type": "string", "description": "Effective role represented by this record, currently administrator" },
+    "status": { "type": "string", "description": "ACTIVE or REVOKED grant state" },
+    "granted_at": { "type": "string", "description": "ISO timestamp when administrator access was granted" },
+    "granted_by": { "type": "string", "description": "Normalized email of the administrator who granted access" },
+    "revoked_at": { "type": "string", "description": "ISO timestamp when administrator access was revoked" },
+    "revoked_by": { "type": "string", "description": "Normalized email of the administrator who revoked access" },
+    "note": { "type": "string", "description": "Bounded private reason for the grant or revocation" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

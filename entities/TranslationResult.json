@@ -1,0 +1,51 @@
+{
+  "name": "TranslationResult",
+  "description": "A private per-segment translation result linked to one transcription session and AudioSegment, with bounded source-positioned translated line snapshots",
+  "properties": {
+    "session_id": { "type": "string", "description": "Parent TranscriptionSession id" },
+    "source_segment_id": { "type": "string", "description": "AudioSegment id whose generated transcript lines were translated" },
+    "source_sequence": { "type": "number", "description": "Stable source AudioSegment sequence number" },
+    "status": { "type": "string", "description": "Translation lifecycle status: translating, completed, or failed" },
+    "requested_source_language": { "type": "string", "description": "Requested source language code, or auto when the source language should be detected" },
+    "detected_source_language": { "type": "string", "description": "Safe detected source language code returned by the later translation workflow" },
+    "target_language": { "type": "string", "description": "Requested target language code; auto is never valid here" },
+    "source_hash": { "type": "string", "description": "Bounded integrity hash for the source lines used by this result" },
+    "settings_hash": { "type": "string", "description": "Bounded hash for the translation settings used by this result" },
+    "lines": {
+      "type": "array",
+      "maxItems": 500,
+      "description": "Bounded translated line snapshots preserving source ids, order, text, speaker labels, and source timing",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_line_id": { "type": "string", "maxLength": 200, "description": "Original TranscriptLine id" },
+          "sequence": { "type": "number", "description": "Original transcript line sequence" },
+          "kind": { "type": "string", "description": "Original line kind: speech, marker, or timestamp" },
+          "source_text": { "type": "string", "maxLength": 10000, "description": "Bounded original line text at translation time" },
+          "translated_text": { "type": "string", "maxLength": 10000, "description": "Bounded translated line text" },
+          "speaker_label": { "type": "string", "maxLength": 160, "description": "Speaker label copied from the source line when present" },
+          "provider_speaker_id": { "type": "string", "maxLength": 200, "description": "Provider speaker identity copied from the source line when present" },
+          "start_ms": { "type": "number", "description": "Source-relative line start time in milliseconds when present" },
+          "end_ms": { "type": "number", "description": "Source-relative line end time in milliseconds when present" }
+        }
+      }
+    },
+    "error": { "type": "string", "maxLength": 1000, "description": "Safe bounded error message for staff; never raw provider output or secrets" },
+    "retry": { "type": "number", "description": "Number of translation retries for this source segment" },
+    "translation_started_at": { "type": "string", "description": "ISO timestamp when the latest translation attempt began" },
+    "translated_at": { "type": "string", "description": "ISO timestamp when the latest translation completed" },
+    "failed_at": { "type": "string", "description": "ISO timestamp when the latest translation attempt failed" },
+    "audio_status": { "type": "string", "description": "Independent translated-audio lifecycle status: idle, synthesizing, completed, or failed" },
+    "audio_url": { "type": "string", "maxLength": 2000, "description": "Managed storage URL for the saved translated voice clip" },
+    "audio_mime_type": { "type": "string", "maxLength": 100, "description": "MIME type of the saved translated voice clip" },
+    "audio_voice_id": { "type": "string", "maxLength": 200, "description": "Provider voice identifier used for the saved clip, when safe to retain" },
+    "audio_error": { "type": "string", "maxLength": 1000, "description": "Safe bounded translated-audio error that does not replace translated text" },
+    "audio_generated_at": { "type": "string", "description": "ISO timestamp when the translated voice clip was saved" }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

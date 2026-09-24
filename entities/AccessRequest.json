@@ -1,0 +1,24 @@
+{
+  "name": "AccessRequest",
+  "description": "Private server-maintained workflow snapshot for a public access request",
+  "properties": {
+    "contact_email": { "type": "string", "description": "Normalized email linking this workflow snapshot to the authoritative Buildy Contact" },
+    "contact_id": { "type": "string", "description": "Optional authoritative Buildy Contact id when available" },
+    "name": { "type": "string", "description": "Bounded name snapshot from the submitted request" },
+    "message": { "type": "string", "description": "Bounded request message snapshot" },
+    "submitted_at": { "type": "string", "description": "Server timestamp when the request entered the workflow" },
+    "status": { "type": "string", "description": "Workflow status: NEW, REVIEWED, or APPROVED" },
+    "private_note": { "type": "string", "description": "Bounded private note visible only to authorized administrators" },
+    "reviewed_by": { "type": "string", "description": "Administrator actor recorded when the request is reviewed" },
+    "reviewed_at": { "type": "string", "description": "Server timestamp when the request was reviewed" },
+    "approved_by": { "type": "string", "description": "Administrator actor recorded when the request is approved" },
+    "approved_at": { "type": "string", "description": "Server timestamp when the request was approved" },
+    "dedupe_key": { "type": "string", "description": "Server-generated recent-request coalescing fingerprint" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

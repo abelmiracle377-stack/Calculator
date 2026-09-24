@@ -1,0 +1,42 @@
+{
+  "name": "ManualPaymentSubmission",
+  "description": "Administrator-only manual payment verification and Premium period record",
+  "properties": {
+    "owner_email": { "type": "string", "description": "Verified account email that submitted the payment" },
+    "country": { "type": "string", "description": "Payment destination country or CRYPTO" },
+    "payment_method": { "type": "string", "description": "NIGERIA_BANK_TRANSFER, UK_BANK_TRANSFER, USA_BANK_TRANSFER, or CRYPTO" },
+    "crypto_option_id": { "type": "string", "description": "Selected cryptocurrency destination id when applicable" },
+    "crypto_name": { "type": "string", "description": "Selected cryptocurrency name when applicable" },
+    "crypto_network": { "type": "string", "description": "Selected cryptocurrency network when applicable" },
+    "base_amount_usd": { "type": "number", "description": "Fixed Premium base price in USD" },
+    "claimed_amount": { "type": "number", "description": "Amount the user says they paid" },
+    "claimed_currency": { "type": "string", "description": "Currency or crypto ticker the user says they paid" },
+    "expected_amount": { "type": "number", "description": "Amount calculated from the current instructions at submission time" },
+    "expected_currency": { "type": "string", "description": "Expected transfer currency, or USD for the crypto equivalent" },
+    "exchange_rate": { "type": "number", "description": "Captured manual conversion rate, or zero when no conversion applies" },
+    "exchange_rate_mode": { "type": "string", "description": "MANUAL for local bank conversion, NONE otherwise" },
+    "exchange_rate_timestamp": { "type": "string", "description": "Rate timestamp captured with the payment instructions" },
+    "transaction_reference": { "type": "string", "description": "Optional transaction or reference id" },
+    "payment_date": { "type": "string", "description": "Date and time the user says payment was made" },
+    "note": { "type": "string", "description": "Optional note from the user" },
+    "receipt_id": { "type": "string", "description": "Private receipt evidence record id" },
+    "status": { "type": "string", "description": "PENDING, APPROVED, or REJECTED" },
+    "admin_decision": { "type": "string", "description": "Administrator decision label" },
+    "admin_reason": { "type": "string", "description": "Administrator notes or rejection reason" },
+    "verification_at": { "type": "string", "description": "ISO timestamp of administrator decision" },
+    "premium_start": { "type": "string", "description": "Premium period start after approval" },
+    "premium_end": { "type": "string", "description": "Premium period end after approval" },
+    "admin_notification_status": { "type": "string", "description": "Status of the safe administrator email notice" },
+    "admin_notification_at": { "type": "string", "description": "When the administrator email notice was processed" },
+    "admin_notification_error": { "type": "string", "description": "Bounded non-sensitive administrator notice error" },
+    "payer_notification_status": { "type": "string", "description": "Status of the safe payer decision email notice" },
+    "payer_notification_at": { "type": "string", "description": "When the payer email notice was processed" },
+    "payer_notification_error": { "type": "string", "description": "Bounded non-sensitive payer notice error" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "delete": { "user_condition": { "email": "abelmiracle377@gmail.com" } }
+  }
+}

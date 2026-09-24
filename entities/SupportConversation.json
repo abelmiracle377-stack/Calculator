@@ -1,0 +1,27 @@
+{
+  "name": "SupportConversation",
+  "description": "Server-only bounded Help Desk conversation mapping for administrator support review",
+  "properties": {
+    "conversation_token": { "type": "string", "description": "Opaque server-generated continuation token safe for the current visitor session" },
+    "provider_conversation_id": { "type": "string", "description": "Private provider conversation identifier never returned to browsers or administrators" },
+    "owner_user_id": { "type": "string", "description": "Authenticated platform user id when the visitor is signed in" },
+    "owner_email": { "type": "string", "description": "Normalized authenticated account email when available" },
+    "visitor_name": { "type": "string", "description": "Bounded visitor name collected only when available or requested for support" },
+    "visitor_email": { "type": "string", "description": "Bounded visitor email collected only when available or requested for support" },
+    "source": { "type": "string", "description": "Conversation source: guest or authenticated" },
+    "status": { "type": "string", "description": "Conversation status: OPEN, HUMAN_REQUESTED, or RESOLVED" },
+    "human_requested": { "type": "boolean", "description": "Whether this conversation has an explicit human support request" },
+    "human_requested_at": { "type": "string", "description": "Server timestamp when human help was requested" },
+    "human_support_request_id": { "type": "string", "description": "Linked HumanSupportRequest id when a handoff exists" },
+    "started_at": { "type": "string", "description": "Server timestamp when the conversation began" },
+    "last_message_at": { "type": "string", "description": "Server timestamp of the latest stored message" },
+    "message_count": { "type": "number", "description": "Bounded count of stored user and assistant messages" },
+    "last_message_preview": { "type": "string", "description": "Bounded preview of the latest user or assistant message" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

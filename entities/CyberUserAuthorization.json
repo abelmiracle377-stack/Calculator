@@ -1,0 +1,34 @@
+{
+  "name": "CyberUserAuthorization",
+  "description": "Owner-scoped authorization scope and validity record for a general-user CyberAI asset",
+  "properties": {
+    "asset_id": { "type": "string", "description": "Related owner-scoped CyberUserAsset id" },
+    "asset_target": { "type": "string", "description": "Server-captured target snapshot for the asset" },
+    "asset_type": { "type": "string", "description": "Server-captured asset type" },
+    "scope_target": { "type": "string", "description": "Explicit bounded authorization scope" },
+    "scope_ports": { "type": "array", "description": "Bounded port numbers or ranges included in scope", "items": { "type": "string" } },
+    "scope_web_paths": { "type": "array", "description": "Bounded web paths included in scope", "items": { "type": "string" } },
+    "allowed_testing_methods": { "type": "array", "description": "Bounded defensive testing methods selected by the owner", "items": { "type": "string" } },
+    "evidence_reference": { "type": "string", "description": "Bounded internal evidence or approval reference" },
+    "valid_from": { "type": "string", "description": "ISO start of the owner authorization window" },
+    "valid_until": { "type": "string", "description": "ISO end of the owner authorization window" },
+    "status": { "type": "string", "description": "PENDING, ACTIVE, REVOKED, or server-derived EXPIRED state" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "workspace_key": { "type": "string", "description": "Server-derived per-user workspace boundary" },
+    "requested_by": { "type": "string", "description": "Server-derived owner email that created the request" },
+    "requested_by_user_id": { "type": "string", "description": "Server-derived owner id that created the request" },
+    "approved_by": { "type": "string", "description": "Server-derived owner email that confirmed the record" },
+    "approved_at": { "type": "string", "description": "Server timestamp for explicit owner confirmation" },
+    "approval_note": { "type": "string", "description": "Bounded confirmation note" },
+    "revoked_by": { "type": "string", "description": "Server-derived owner email that revoked the record" },
+    "revoked_at": { "type": "string", "description": "Server timestamp for revocation" },
+    "revocation_note": { "type": "string", "description": "Bounded revocation note" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

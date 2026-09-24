@@ -1,0 +1,35 @@
+{
+  "name": "AiLearningAuditEvent",
+  "description": "Append-oriented administrator audit event for private AI learning decisions and source promotions",
+  "properties": {
+    "learning_item_id": { "type": "string", "description": "Related AI learning item id" },
+    "action": { "type": "string", "description": "Lifecycle action such as CREATED, APPROVED, or REJECTED" },
+    "actor_email": { "type": "string", "description": "Normalized administrator actor email" },
+    "source_owner_email": { "type": "string", "description": "Private source workspace owner email" },
+    "source_kind": { "type": "string", "description": "Learning candidate provenance kind" },
+    "target_surface": { "type": "string", "description": "Prompt surface targeted by the candidate" },
+    "source_session_id": { "type": "string", "description": "Source transcription session id" },
+    "source_line_id": { "type": "string", "description": "Source transcript line id" },
+    "source_conversation_id": { "type": "string", "description": "Source assistant conversation id" },
+    "source_message_id": { "type": "string", "description": "Source assistant message id" },
+    "source_document_id": { "type": "string", "description": "Source assistant document id" },
+    "source_support_request_id": { "type": "string", "description": "Source human support request id" },
+    "evidence_item_ids": { "type": "array", "description": "Approved evidence item ids supporting a repeated pattern", "items": { "type": "string" } },
+    "scope_key": { "type": "string", "description": "Approved private learning scope" },
+    "previous_rule": { "type": "string", "description": "Bounded rule value before the lifecycle action" },
+    "current_rule": { "type": "string", "description": "Bounded rule value after the lifecycle action" },
+    "previous_status": { "type": "string", "description": "Status before the lifecycle action" },
+    "current_status": { "type": "string", "description": "Status after the lifecycle action" },
+    "version": { "type": "number", "description": "Rule version recorded for the lifecycle action" },
+    "active": { "type": "boolean", "description": "Whether the rule was active after the lifecycle action" },
+    "server_timestamp": { "type": "string", "description": "Server timestamp for the audit event" },
+    "dedupe_key": { "type": "string", "description": "Server-generated lifecycle idempotency key" },
+    "note": { "type": "string", "description": "Bounded private decision note" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

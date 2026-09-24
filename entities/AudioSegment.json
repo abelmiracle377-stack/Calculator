@@ -1,0 +1,40 @@
+{
+  "name": "AudioSegment",
+  "description": "An independently playable recorded audio chunk with complete source offsets and transcription state",
+  "properties": {
+    "session_id": { "type": "string", "description": "Parent TranscriptionSession id" },
+    "sequence": { "type": "number", "description": "Order of the segment within the session" },
+    "audio_url": { "type": "string", "description": "Managed storage URL for the audio file" },
+    "mime_type": { "type": "string", "description": "Audio MIME type such as audio/webm" },
+    "byte_size": { "type": "number", "description": "File size in bytes" },
+    "start_ms": { "type": "number", "description": "Full-session source-relative start time in milliseconds" },
+    "end_ms": { "type": "number", "description": "Full-session source-relative end time in milliseconds" },
+    "is_final_segment": { "type": "boolean", "description": "True for the one latest non-empty segment that carries final capture timing and trailing silence metadata" },
+    "meaningful_audio_started_ms": { "type": "number", "description": "Full-session source timestamp of meaningful audio when it falls within or informs this segment" },
+    "meaningful_audio_ended_ms": { "type": "number", "description": "Full-session source timestamp of the last meaningful signal when known for this segment" },
+    "leading_silence_ms": { "type": "number", "description": "Leading silence duration represented by this segment" },
+    "trailing_silence_ms": { "type": "number", "description": "Trailing silence duration represented by this segment" },
+    "clock_source": { "type": "string", "description": "Clock used for this segment: audio-context or best-effort script-processor fallback" },
+    "upload_status": { "type": "string", "description": "pending, uploaded, or failed" },
+    "error_message": { "type": "string", "description": "Upload error details" },
+    "transcription_status": { "type": "string", "description": "pending, transcribing, completed, or failed" },
+    "transcription_error": { "type": "string", "description": "Safe transcription error shown to staff" },
+    "transcription_started_at": { "type": "string", "description": "ISO timestamp when the latest transcription attempt began" },
+    "transcribed_at": { "type": "string", "description": "ISO timestamp when the latest transcription completed" },
+    "detected_language": { "type": "string", "description": "Primary language value returned by the transcription provider" },
+    "language_probability": { "type": "number", "description": "Provider primary-language confidence from zero to one" },
+    "detected_languages": { "type": "array", "description": "De-duplicated language values present in the provider response for this segment, including documented structured or per-word values when supplied", "items": { "type": "string" } },
+    "speaker_count": { "type": "number", "description": "Number of provider speaker identities detected" },
+    "detected_speakers": { "type": "array", "description": "Stable display labels detected in first-seen order", "items": { "type": "string" } },
+    "provider_speaker_ids": { "type": "array", "description": "Provider speaker identities in first-seen order", "items": { "type": "string" } },
+    "word_count": { "type": "number", "description": "Number of spoken words returned by the provider" },
+    "provider_text": { "type": "string", "description": "Bounded raw provider transcript text for retry and audit context" },
+    "pulsar_review_status": { "type": "string", "description": "Optional local Pulsar Review status: not_started, in_progress, or done. Older clips default to not_started in the app." }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

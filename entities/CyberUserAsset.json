@@ -1,0 +1,23 @@
+{
+  "name": "CyberUserAsset",
+  "description": "Owner-scoped CyberAI asset metadata for the general-user planning workspace",
+  "properties": {
+    "name": { "type": "string", "description": "Bounded human-readable asset name" },
+    "asset_type": { "type": "string", "description": "One of the supported domain, address, website, API, or service asset types" },
+    "target": { "type": "string", "description": "Server-normalized asset target, stored without making a network request" },
+    "description": { "type": "string", "description": "Bounded owner-supplied context for the asset" },
+    "status": { "type": "string", "description": "ACTIVE or ARCHIVED asset lifecycle state" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "workspace_key": { "type": "string", "description": "Server-derived per-user workspace boundary" },
+    "last_updated_by": { "type": "string", "description": "Server-derived owner email for the latest metadata change" },
+    "archived_at": { "type": "string", "description": "Server timestamp when the record was archived" },
+    "archived_by": { "type": "string", "description": "Server-derived owner email that archived the record" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

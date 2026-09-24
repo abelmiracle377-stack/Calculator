@@ -1,0 +1,35 @@
+{
+  "name": "AssistantMessage",
+  "description": "A bounded message in an owner-scoped in-app assistant conversation",
+  "properties": {
+    "conversation_id": { "type": "string", "description": "Parent AssistantConversation id" },
+    "document_id": { "type": "string", "description": "Optional owner-scoped AssistantDocument id used for this message" },
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "role": { "type": "string", "description": "Message role: user or assistant" },
+    "content": { "type": "string", "description": "Bounded visible message text" },
+    "image_attachments": { "type": "array", "description": "Optional bounded HTTPS image attachment URLs on owner user messages", "items": { "type": "string" } },
+    "references": { "type": "array", "description": "Grounded page, section, or line references, when available", "items": { "type": "string" } },
+    "citation_text": { "type": "string", "description": "Bounded display text for grounded references" },
+    "answer_mode": { "type": "string", "description": "Answer source: general, app_help, public_web, or document" },
+    "web_sources": {
+      "type": "array",
+      "description": "Validated bounded public sources used for a public web answer; contains no provider payload or private data",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "Bounded source title" },
+          "url": { "type": "string", "description": "Validated HTTPS source URL" },
+          "snippet": { "type": "string", "description": "Bounded source snippet" }
+        }
+      }
+    },
+    "sent_at": { "type": "string", "description": "ISO timestamp when the message was saved" }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

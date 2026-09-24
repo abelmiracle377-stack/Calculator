@@ -1,0 +1,24 @@
+{
+  "name": "CyberUserAuditEvent",
+  "description": "Server-generated owner-scoped audit trail for general-user CyberAI planning actions",
+  "properties": {
+    "action": { "type": "string", "description": "Server-recorded bounded action name" },
+    "outcome": { "type": "string", "description": "SUCCESS, DENIED, VALIDATION_FAILED, or ERROR" },
+    "message": { "type": "string", "description": "Bounded audit explanation" },
+    "asset_id": { "type": "string", "description": "Related owner asset id when applicable" },
+    "authorization_id": { "type": "string", "description": "Related owner authorization id when applicable" },
+    "session_id": { "type": "string", "description": "Related owner assessment session id when applicable" },
+    "target_snapshot": { "type": "string", "description": "Bounded target context, never a command or scan result" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "workspace_key": { "type": "string", "description": "Server-derived per-user workspace boundary" },
+    "occurred_at": { "type": "string", "description": "Server timestamp for the audit event" },
+    "request_id": { "type": "string", "description": "Server-generated audit correlation id" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

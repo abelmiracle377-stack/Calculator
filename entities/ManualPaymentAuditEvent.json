@@ -1,0 +1,19 @@
+{
+  "name": "ManualPaymentAuditEvent",
+  "description": "Append-only administrator-only audit history for safe manual billing actions",
+  "properties": {
+    "action": { "type": "string", "description": "Billing action or event type" },
+    "actor_email": { "type": "string", "description": "Verified administrator email or system for scheduled work" },
+    "subject_email": { "type": "string", "description": "User account affected by the action, when applicable" },
+    "related_payment_id": { "type": "string", "description": "Related manual payment id, when applicable" },
+    "related_subscription_id": { "type": "string", "description": "Related Premium subscription id, when applicable" },
+    "summary": { "type": "string", "description": "Concise safe description of the action" },
+    "metadata_text": { "type": "string", "description": "Bounded safe metadata, never receipt or credential payloads" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

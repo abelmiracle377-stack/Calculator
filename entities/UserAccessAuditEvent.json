@@ -1,0 +1,21 @@
+{
+  "name": "UserAccessAuditEvent",
+  "description": "Private append-oriented audit history for access lifecycle and administrator actions",
+  "properties": {
+    "target_user_email": { "type": "string", "description": "Private email of the account affected by the event" },
+    "target_user_id": { "type": "string", "description": "Private platform user id when available" },
+    "actor_email": { "type": "string", "description": "Private verified actor email or system" },
+    "action": { "type": "string", "description": "Lifecycle, payment, restriction, or restoration action" },
+    "occurred_at": { "type": "string", "description": "Server timestamp for the event" },
+    "related_payment_id": { "type": "string", "description": "Related payment record id when applicable" },
+    "related_subscription_id": { "type": "string", "description": "Related subscription record id when applicable" },
+    "dedupe_key": { "type": "string", "description": "Server-generated idempotency key for lifecycle events" },
+    "note": { "type": "string", "description": "Concise private description of the event" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

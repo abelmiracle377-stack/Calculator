@@ -1,0 +1,37 @@
+{
+  "id": "/",
+  "name": "Audio Expert",
+  "short_name": "Audio Expert",
+  "description": "Audio Expert",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#f05942",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/files/zsluhniotqu8lwiuishg/pwa/icon-192-e72b1aa830.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/files/zsluhniotqu8lwiuishg/pwa/icon-512-9acfb05355.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/files/zsluhniotqu8lwiuishg/pwa/icon-512-maskable-49b4bb035a.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "TranscriptAnnotation",
+  "description": "A private labeled time range and staff note inside a transcription session",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Parent TranscriptionSession id"
+    },
+    "start_ms": {
+      "type": "number",
+      "description": "Session-relative annotation start in milliseconds"
+    },
+    "end_ms": {
+      "type": "number",
+      "description": "Session-relative annotation end in milliseconds"
+    },
+    "label": {
+      "type": "string",
+      "description": "Short label for the selected recording range"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Staff note attached to the selected range"
+    },
+    "color": {
+      "type": "string",
+      "description": "Visual category color key"
+    },
+    "category": {
+      "type": "string",
+      "description": "Annotation category such as note, action, or review"
+    },
+    "sequence": {
+      "type": "number",
+      "description": "Display order for annotations with the same start time"
+    }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

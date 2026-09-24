@@ -1,0 +1,37 @@
+{
+  "name": "AssistantDocument",
+  "description": "A private document uploaded by one workspace owner for in-app assistant questions",
+  "properties": {
+    "owner_user_id": { "type": "string", "description": "Server-derived authenticated owner id" },
+    "owner_email": { "type": "string", "description": "Server-derived authenticated owner email" },
+    "display_name": { "type": "string", "description": "Safe display name shown in the assistant document picker" },
+    "original_name": { "type": "string", "description": "Bounded original filename retained for the owner" },
+    "mime_type": { "type": "string", "description": "Accepted PDF, text, CSV, or image MIME type" },
+    "category": { "type": "string", "description": "Accepted document category: pdf, txt, csv, or image" },
+    "byte_size": { "type": "number", "description": "Verified uploaded file size in bytes" },
+    "status": { "type": "string", "description": "Processing state: PROCESSING, READY, FAILED, or DELETED" },
+    "error_message": { "type": "string", "description": "Safe bounded processing message for the owner" },
+    "extracted_text": { "type": "string", "description": "Bounded extracted document text, never returned in list metadata" },
+    "marker_metadata": {
+      "type": "array",
+      "description": "Safe bounded page, section, or line markers used for grounded references",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string", "description": "Grounded reference label" },
+          "page": { "type": "number", "description": "Optional source page number" },
+          "section": { "type": "string", "description": "Optional source section label" },
+          "start_line": { "type": "number", "description": "Optional first plain-text line" },
+          "end_line": { "type": "number", "description": "Optional last plain-text line" }
+        }
+      }
+    },
+    "source_file_url": { "type": "string", "description": "Private managed source reference used only by the protected backend, never returned to the browser" }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

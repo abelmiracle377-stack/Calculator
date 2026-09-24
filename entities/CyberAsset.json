@@ -1,0 +1,23 @@
+{
+  "name": "CyberAsset",
+  "description": "Private authorized asset inventory record for the CyberAI Security Range Phase 1 workspace",
+  "properties": {
+    "name": { "type": "string", "description": "Human-readable asset name" },
+    "asset_type": { "type": "string", "description": "Bounded asset type such as Domain, Website, or IPv4" },
+    "target": { "type": "string", "description": "Server-normalized domain, address, URL, or network service target" },
+    "description": { "type": "string", "description": "Bounded internal description of the authorized asset" },
+    "status": { "type": "string", "description": "ACTIVE or ARCHIVED asset lifecycle state" },
+    "owner_email": { "type": "string", "description": "Verified administrator email that created the record" },
+    "owner_user_id": { "type": "string", "description": "Authenticated platform user id that created the record" },
+    "workspace_key": { "type": "string", "description": "Server-controlled workspace boundary key for future tenancy" },
+    "last_updated_by": { "type": "string", "description": "Verified administrator email for the latest metadata change" },
+    "archived_at": { "type": "string", "description": "Server timestamp when the asset was archived" },
+    "archived_by": { "type": "string", "description": "Verified administrator email that archived the asset" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

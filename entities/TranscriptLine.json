@@ -1,0 +1,35 @@
+{
+  "name": "TranscriptLine",
+  "description": "A manually edited or provider-generated speech line, sound-event marker, or timestamp within a session",
+  "properties": {
+    "session_id": { "type": "string", "description": "Parent TranscriptionSession id" },
+    "sequence": { "type": "number", "description": "Stable order within the session" },
+    "kind": { "type": "string", "description": "Line kind: speech, marker, or timestamp" },
+    "speaker_label": { "type": "string", "description": "Editable speaker label for speech lines" },
+    "text": { "type": "string", "description": "Current editable line text or lower-case bracketed event tag" },
+    "start_ms": { "type": "number", "description": "Full-session source-relative start time in milliseconds when supplied" },
+    "end_ms": { "type": "number", "description": "Full-session source-relative end time in milliseconds when supplied" },
+    "source_segment_id": { "type": "string", "description": "AudioSegment that produced this line, when generated" },
+    "origin": { "type": "string", "description": "generated or manual" },
+    "provider_speaker_id": { "type": "string", "description": "Provider speaker identity before manual relabeling" },
+    "raw_text": { "type": "string", "description": "Original provider or manually captured text retained for review" },
+    "confidence": { "type": "number", "description": "Average provider confidence for this generated line" },
+    "provider_start_ms": { "type": "number", "description": "Provider-relative start time in milliseconds when supplied" },
+    "provider_end_ms": { "type": "number", "description": "Provider-relative end time in milliseconds when supplied" },
+    "edit_state": { "type": "string", "description": "provider or edited" },
+    "edited_at": { "type": "string", "description": "ISO timestamp when staff or cleanup last changed this line" },
+    "cleanup_text": { "type": "string", "description": "Latest accepted AI cleanup text, without replacing raw_text" },
+    "cleanup_applied": { "type": "boolean", "description": "Whether a reviewed cleanup proposal was applied" },
+    "audio_event_tags": { "type": "array", "description": "Provider-returned bracketed sound-event tags retained on a line", "items": { "type": "string" } },
+    "automatic_marker": { "type": "boolean", "description": "True when this marker was generated from a provider-timed audio event" },
+    "audio_event_source": { "type": "string", "description": "Event marker source: provider, vad, or manual" },
+    "audio_event_type": { "type": "string", "description": "Normalized provider event type without changing the displayed bracket tag" },
+    "audio_event_confidence": { "type": "number", "description": "Optional provider confidence for an automatic event marker" }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

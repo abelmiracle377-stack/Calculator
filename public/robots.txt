@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /Admin
+Allow: /NotFound
+
+Sitemap: https://trancript.art/sitemap.xml

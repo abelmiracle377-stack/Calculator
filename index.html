@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- buildy:pwa:start -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#f05942">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Audio Expert">
+    <link rel="apple-touch-icon" href="https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/files/zsluhniotqu8lwiuishg/pwa/apple-touch-icon-180-f7c39c17d2.png">
+    <!-- buildy:pwa:end -->
+<script id="buildy-preview-diagnostics-v2">(() => {
+  try {
+    const parentOrigin = new URL(document.referrer).origin;
+    if (!['https://trancript.art', 'https://trancript.art', 'https://buildy.ai', 'https://www.buildy.ai'].includes(parentOrigin)) return;
+    const loadId = new URL(location.href).searchParams.get('buildy_preview_load');
+    if (!loadId || !/^[a-zA-Z0-9_-]{10,64}$/.test(loadId) || window.parent === window) return;
+    const documentId = crypto.randomUUID();
+    const started = performance.now();
+    let sent = 0;
+    let observations = 0;
+    const seen = new Set();
+    function emit(event, details = {}) {
+      const key = JSON.stringify([event, details]);
+      if (seen.has(key)) return;
+      if (event === 'root_observed') {
+        if (observations >= 3) return;
+        observations++;
+      } else {
+        if (sent >= 37) return;
+        sent++;
+      }
+      seen.add(key);
+      window.parent.postMessage({ type: 'Verbetim_PREVIEW_DIAGNOSTIC', payload: {
+        loadId, documentId, event, clientTimestampMs: Date.now(), elapsedMs: Math.round(performance.now() - started), ...details
+      }}, parentOrigin);
+    }
+    function asset(raw) {
+      try {
+        const url = new URL(raw, location.href);
+        if (url.origin !== location.origin || !/^\/(?:node_modules\/\.vite\/deps\/|src\/|@vite\/)[a-zA-Z0-9_./-]+$/.test(url.pathname) || url.pathname.length > 300) return {};
+        const version = url.searchParams.get('v');
+        return { assetPath: url.pathname, ...(/^[a-fA-F0-9]{1,64}$/.test(version || '') ? { version } : {}) };
+      } catch { return {}; }
+    }
+    window.addEventListener('error', event => {
+      const target = event.target;
+      if (target && target !== window) {
+        const details = asset(target.src || target.href || '');
+        if (details.assetPath) emit('resource_error', details);
+      } else {
+        emit('module_error', asset(event.filename || ''));
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', () => emit('unhandled_rejection'));
+    const root = phase => emit('root_observed', { phase, rootHasChildren: Boolean(document.getElementById('root')?.childElementCount) });
+    document.addEventListener('DOMContentLoaded', () => root('dom_content_loaded'), { once: true });
+    window.addEventListener('load', () => root('load'), { once: true });
+    setTimeout(() => root('timeout'), 12000);
+    emit('capture_started');
+    if (typeof PerformanceObserver !== 'undefined') {
+      let resources = 0;
+      const observer = new PerformanceObserver(list => {
+        for (const entry of list.getEntries()) {
+          const details = asset(entry.name);
+          if (details.assetPath && entry.responseStatus >= 400) {
+            emit('resource_error', { ...details, responseStatus: entry.responseStatus });
+          }
+          if (details.assetPath?.startsWith('/node_modules/.vite/deps/') && resources < 20) {
+            resources++;
+            emit('dependency_resource', { ...details, transferSize: entry.transferSize || 0, durationMs: Math.round(entry.duration) });
+          }
+        }
+      });
+      observer.observe({ type: 'resource', buffered: true });
+      setTimeout(() => observer.disconnect(), 15000);
+    }
+  } catch { /* Diagnostics must never interrupt the app. */ }
+})();</script>
+    <link rel="icon" type="image/png" href="https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/project-favicons/55a7c297-eb40-429a-91ee-0a6f9179c23c/zsluhniotqu8lwiuishg-13eb9860-4bd9-458f-88d6-7530e79f5786.png?v=1788770276001">
+    <link rel="apple-touch-icon" href="https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/project-favicons/55a7c297-eb40-429a-91ee-0a6f9179c23c/zsluhniotqu8lwiuishg-13eb9860-4bd9-458f-88d6-7530e79f5786.png?v=1788770276001">
+    <meta property="og:image" content="https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/files/chat-generated-images/project-zsluhniotqu8lwiuishg/56d2d814-484f-4356-bfee-d2bcefbd2f4b.png?v=1788408038993">
+    <meta name="twitter:image" content="https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/object/public/files/chat-generated-images/project-zsluhniotqu8lwiuishg/56d2d814-484f-4356-bfee-d2bcefbd2f4b.png?v=1788408038993">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Change the title -->
+    <title>Audio Expert</title>
+    <meta name="description" content="Built by trancript.art" />
+    <meta name="author" content="trancript.art" />
+
+
+
+    <!-- Example: Importing Geist Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- VERY IMPORTANT: THESE IMPORTS ARE REQUIRED FOR FUNCTIONALITY. DO NOT REMOVE THESE IMPORTS!!! -->
+    <script src="https://assets.buildy.show/preview/v2/console-capture.7d176523.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- VERY IMPORTANT: THESE IMPORTS ARE REQUIRED FOR FUNCTIONALITY. DO NOT REMOVE THESE IMPORTS!!! -->
+  </body>
+</html>

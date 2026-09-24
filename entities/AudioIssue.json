@@ -1,0 +1,21 @@
+{
+  "name": "AudioIssue",
+  "description": "A source-timestamped capture, signal, provider, or upload finding detected during a session",
+  "properties": {
+    "session_id": { "type": "string", "description": "Parent TranscriptionSession id" },
+    "kind": { "type": "string", "description": "Issue kind: legacy clipping or silence, leading_silence, trailing_silence, possible_clipping, possible_pop_click, possible_distortion, source signal, sharing, recorder, upload, or transcription finding" },
+    "severity": { "type": "string", "description": "info, warning, or error" },
+    "timestamp_ms": { "type": "number", "description": "Full-session source timestamp where the finding starts, including valid silence and shared-track-end positions" },
+    "end_timestamp_ms": { "type": "number", "description": "Optional full-session source timestamp where the finding ends" },
+    "notes": { "type": "string", "description": "Human-readable explanation of the finding" },
+    "source": { "type": "string", "description": "Finding source: vad, provider, or recorder" },
+    "possible": { "type": "boolean", "description": "True when a local signal heuristic is only a possible finding, not a confirmed acoustic cause" },
+    "confidence": { "type": "number", "description": "Optional provider or signal confidence from zero to one" }
+  },
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": { "created_by": "{{user.email}}" },
+    "update": { "created_by": "{{user.email}}" },
+    "delete": { "created_by": "{{user.email}}" }
+  }
+}

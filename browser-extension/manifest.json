@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Verbatim Desk Capture",
+  "version": "0.1.0",
+  "description": "Capture a Chrome tab's audio and monitor meaningful signal automatically.",
+  "minimum_chrome_version": "116",
+  "permissions": ["tabCapture", "offscreen", "storage", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Verbatim Desk capture",
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "AdminMessageTemplates",
+  "description": "Private administrator-managed plain-text lifecycle email templates",
+  "properties": {
+    "settings_key": { "type": "string", "description": "The single default message template record key" },
+    "signup_subject": { "type": "string", "description": "Plain-text subject sent after a new account first enters the workspace" },
+    "signup_body": { "type": "string", "description": "Plain-text message sent after a new account first enters the workspace" },
+    "payment_submitted_subject": { "type": "string", "description": "Plain-text subject sent after a manual payment submission" },
+    "payment_submitted_body": { "type": "string", "description": "Plain-text message sent after a manual payment submission" },
+    "payment_approved_subject": { "type": "string", "description": "Plain-text subject sent after a manual payment is approved" },
+    "payment_approved_body": { "type": "string", "description": "Plain-text message sent after a manual payment is approved" },
+    "updated_by": { "type": "string", "description": "Authorized administrator account that last saved the templates" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "delete": { "user_condition": { "email": "abelmiracle377@gmail.com" } }
+  }
+}

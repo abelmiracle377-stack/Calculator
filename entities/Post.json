@@ -1,0 +1,63 @@
+{
+  "name": "Post",
+  "description": "Blog posts and articles",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the post"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly version of the title"
+    },
+    "content": {
+      "type": "object",
+      "description": "Rich text content (JSON format)"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "A short summary of the post"
+    },
+    "featured_image": {
+      "type": "string",
+      "description": "URL of the post's featured image"
+    },
+    "status": {
+      "type": "string",
+      "description": "Publication status (draft, published, scheduled)"
+    },
+    "category_id": {
+      "type": "string",
+      "description": "Reference to Category ID"
+    },
+    "author_id": {
+      "type": "string",
+      "description": "Reference to Author ID"
+    },
+    "published_at": {
+      "type": "string",
+      "description": "Date and time the post was published"
+    },
+    "seo_settings": {
+      "type": "object",
+      "description": "SEO settings for the post",
+      "properties": {
+        "meta_title": {
+          "type": "string"
+        },
+        "meta_description": {
+          "type": "string"
+        },
+        "og_image": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "rls": {
+    "create": { "user_condition": { "role": "administrator" } },
+    "read": {},
+    "update": { "user_condition": { "role": "administrator" } },
+    "delete": { "user_condition": { "role": "administrator" } }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "ReengagementSettings",
+  "description": "Private server-controlled settings for the opt-in older inactive account reminder",
+  "properties": {
+    "settings_key": { "type": "string", "description": "Stable single-record settings key, currently default" },
+    "enabled": { "type": "boolean", "description": "Whether the daily re-engagement reminder is enabled" },
+    "subject": { "type": "string", "maxLength": 120, "description": "Administrator-written plain-text reminder subject" },
+    "body": { "type": "string", "maxLength": 2000, "description": "Administrator-written plain-text reminder body" },
+    "updated_by": { "type": "string", "description": "Verified administrator email that last saved the reminder" },
+    "last_run_at": { "type": "string", "description": "Server timestamp of the most recent scheduled check" },
+    "last_run_count": { "type": "number", "description": "Number of reminder emails sent by the most recent scheduled check" },
+    "last_run_error": { "type": "string", "maxLength": 500, "description": "Safe bounded summary of the most recent scheduled check issue" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

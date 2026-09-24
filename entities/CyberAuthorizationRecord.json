@@ -1,0 +1,37 @@
+{
+  "name": "CyberAuthorizationRecord",
+  "description": "Private authorization scope and approval record for a CyberAI asset",
+  "properties": {
+    "asset_id": { "type": "string", "description": "Related CyberAsset record id" },
+    "asset_target": { "type": "string", "description": "Server-captured target snapshot for the authorized asset" },
+    "asset_type": { "type": "string", "description": "Server-captured asset type for the authorization" },
+    "scope_target": { "type": "string", "description": "Explicit bounded target or scope description" },
+    "scope_ports": { "type": "array", "description": "Bounded port numbers or ranges included in scope", "items": { "type": "string" } },
+    "scope_web_paths": { "type": "array", "description": "Bounded web paths included in scope", "items": { "type": "string" } },
+    "allowed_testing_methods": { "type": "array", "description": "Methods selected from the safe Phase 1 allowlist", "items": { "type": "string" } },
+    "evidence_reference": { "type": "string", "description": "Bounded reference to authorization evidence stored by the administrator" },
+    "valid_from": { "type": "string", "description": "ISO timestamp when the authorization window begins" },
+    "valid_until": { "type": "string", "description": "ISO timestamp when the authorization window ends" },
+    "status": { "type": "string", "description": "PENDING, ACTIVE, REVOKED, or server-derived EXPIRED state" },
+    "owner_email": { "type": "string", "description": "Verified administrator email that created the authorization" },
+    "owner_user_id": { "type": "string", "description": "Authenticated platform user id that created the authorization" },
+    "requested_by": { "type": "string", "description": "Verified administrator email that requested the authorization" },
+    "requested_by_user_id": { "type": "string", "description": "Authenticated platform user id that requested the authorization" },
+    "approved_by": { "type": "string", "description": "Verified administrator email that approved the authorization" },
+    "approved_at": { "type": "string", "description": "Server timestamp for explicit approval" },
+    "approval_note": { "type": "string", "description": "Bounded private approval note" },
+    "renewed_by": { "type": "string", "description": "Verified administrator email that renewed the authorization" },
+    "renewed_at": { "type": "string", "description": "Server timestamp for the latest renewal" },
+    "renewal_note": { "type": "string", "description": "Bounded private renewal note" },
+    "revoked_by": { "type": "string", "description": "Verified administrator email that revoked the authorization" },
+    "revoked_at": { "type": "string", "description": "Server timestamp for revocation" },
+    "revocation_note": { "type": "string", "description": "Bounded private revocation note" },
+    "workspace_key": { "type": "string", "description": "Server-controlled workspace boundary key for future tenancy" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "__server_only__" } },
+    "read": { "user_condition": { "email": "__server_only__" } },
+    "update": { "user_condition": { "email": "__server_only__" } },
+    "delete": { "user_condition": { "email": "__server_only__" } }
+  }
+}

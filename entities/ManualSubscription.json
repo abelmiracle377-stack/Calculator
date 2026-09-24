@@ -1,0 +1,21 @@
+{
+  "name": "ManualSubscription",
+  "description": "Administrator-controlled one-month Premium access period for a user",
+  "properties": {
+    "owner_email": { "type": "string", "description": "Verified account email" },
+    "status": { "type": "string", "description": "NONE, ACTIVE, or EXPIRED" },
+    "premium_start": { "type": "string", "description": "Current Premium period start" },
+    "premium_end": { "type": "string", "description": "Current Premium period end" },
+    "latest_payment_id": { "type": "string", "description": "Latest approved manual payment id" },
+    "payment_method": { "type": "string", "description": "Method on the latest approved payment" },
+    "amount": { "type": "number", "description": "Claimed amount on the latest approved payment" },
+    "currency": { "type": "string", "description": "Currency on the latest approved payment" },
+    "expired_at": { "type": "string", "description": "When the daily expiry job marked this period expired" }
+  },
+  "rls": {
+    "create": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "read": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "update": { "user_condition": { "email": "abelmiracle377@gmail.com" } },
+    "delete": { "user_condition": { "email": "abelmiracle377@gmail.com" } }
+  }
+}
