@@ -9,9 +9,9 @@ const LOGO_URL =
   "https://ellprnxjjzatijdxcogk.supabase.co/storage/v1/render/image/public/files/chat-generated-images/project-zsluhniotqu8lwiuishg/56d2d814-484f-4356-bfee-d2bcefbd2f4b.png?width=128&resize=contain&quality=75";
 
 const DEFAULT_BRANDING = {
-  workspaceName: "Verbatim Desk",
-  shortLabel: "Internal staff tool",
-  description: "Private audio transcription workspace for accurate review.",
+  workspaceName: "Transcript.art",
+  shortLabel: "AI transcription workspace",
+  description: "Capture, transcribe, translate, review, and export audio with AI assistance.",
 };
 
 type PublicSettingsRow = Record<string, unknown>;
